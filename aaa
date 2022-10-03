@@ -1,0 +1,3 @@
+local function try()
+   print("yes")
+end
