@@ -402,7 +402,6 @@ if table.find(Whitelist, game.Players.LocalPlayer.UserId) or Free == true then
         writefile("Task Manager/MainAccounts.txt", "");
     end
 
-
     function ClearTasks()
         writefile("Task Manager/"..game.Players.LocalPlayer.UserId..".txt", "")
     end
@@ -412,7 +411,6 @@ if table.find(Whitelist, game.Players.LocalPlayer.UserId) or Free == true then
     function RemoveTask(number)
         loadfile("Task Manager/"..game.Players.LocalPlayer.UserId..".txt")()
         if (not isfile("Task Manager/"..game.Players.LocalPlayer.UserId..".txt")) then
-            --file doesn't exist so create it
             writefile("Task Manager/"..game.Players.LocalPlayer.UserId..".txt", "");
         end
         loadfile("Task Manager/"..game.Players.LocalPlayer.UserId..".txt")()
