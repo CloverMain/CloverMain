@@ -208,7 +208,6 @@ if table.find(Whitelist, game.Players.LocalPlayer.UserId) or Free == true then
         end
     end
     function CheckIFExists(folder, v1, Skip)
-        print("run")
         if folder == nil then
             folder = game.workspace
         end
@@ -450,7 +449,7 @@ if table.find(Whitelist, game.Players.LocalPlayer.UserId) or Free == true then
         for i,v in pairs(tbl) do
             local text = i
             local number = v
-            file = file.."   ["..i.."] = '"..v.."',\n"
+            file = file..'   ['..i..'] = "'..v..'",\n'
         end
         file = file.."}"
         writefile("Task Manager/"..game.Players.LocalPlayer.UserId..".txt", file)
