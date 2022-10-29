@@ -391,6 +391,59 @@ if table.find(Whitelist, game.Players.LocalPlayer.UserId) or Free == true then
         end
     end
     
+    -- Accounts
+    function RemoveAccount(number)
+        if number ~= nil and tonumber(number) then
+            loadfile("Task Manager/MainAccounts.txt")()
+            if (not isfile("Task Manager/MainAccounts.txt")) then
+                --file doesn't exist so create it
+                writefile("Task Manager/MainAccounts.txt", "");
+            end
+            loadfile("Task Manager/MainAccounts.txt")()
+            if MainAccounts then
+                tbl = MainAccounts
+            else
+                tbl = {
+                }
+            end
+            table.remove(tbl,number)
+            
+            file = "MainAccounts = {\n"
+            for i,v in pairs(tbl) do
+                local text = i
+                local number = v
+                file = file.."   ["..i.."] = '"..v.."',\n"
+            end
+            file = file.."}"
+            writefile("Task Manager/MainAccounts.txt", file)
+        end
+    end
+    function AddAccount(txt)
+        if txt ~= nil and txt ~= "" then
+            if (not isfile("Task Manager/MainAccounts.txt")) then
+                writefile("Task Manager/MainAccounts.txt", "");
+            end
+            loadfile("Task Manager/MainAccounts.txt")()
+            if MainAccounts then
+                tbl = MainAccounts
+            else
+                tbl = {
+                }
+            end
+            table.insert(tbl,txt)
+            
+            file = "MainAccounts = {\n"
+            for i,v in pairs(tbl) do
+                local text = i
+                local number = v
+                file = file.."   ["..i.."] = '"..v.."',\n"
+            end
+            file = file.."}"
+            writefile("Task Manager/MainAccounts.txt", file)
+        end
+    end
+
+
     -- File
     if not isfolder("Task Manager") then
         makefolder("Task Manager")
@@ -462,56 +515,26 @@ if table.find(Whitelist, game.Players.LocalPlayer.UserId) or Free == true then
         writefile("Task Manager/"..game.Players.LocalPlayer.UserId..".txt", file)
     end
 
-    function RemoveAccount(number)
-        if number ~= nil and tonumber(number) then
-            loadfile("Task Manager/MainAccounts.txt")()
-            if (not isfile("Task Manager/MainAccounts.txt")) then
-                --file doesn't exist so create it
-                writefile("Task Manager/MainAccounts.txt", "");
-            end
-            loadfile("Task Manager/MainAccounts.txt")()
-            if MainAccounts then
-                tbl = MainAccounts
-            else
-                tbl = {
-                }
-            end
-            table.remove(tbl,number)
-            
-            file = "MainAccounts = {\n"
-            for i,v in pairs(tbl) do
-                local text = i
-                local number = v
-                file = file.."   ["..i.."] = '"..v.."',\n"
-            end
-            file = file.."}"
-            writefile("Task Manager/MainAccounts.txt", file)
-        end
-    end
-    function AddAccount(txt)
-        if txt ~= nil and txt ~= "" then
-            if (not isfile("Task Manager/MainAccounts.txt")) then
-                writefile("Task Manager/MainAccounts.txt", "");
-            end
-            loadfile("Task Manager/MainAccounts.txt")()
-            if MainAccounts then
-                tbl = MainAccounts
-            else
-                tbl = {
-                }
-            end
-            table.insert(tbl,txt)
-            
-            file = "MainAccounts = {\n"
-            for i,v in pairs(tbl) do
-                local text = i
-                local number = v
-                file = file.."   ["..i.."] = '"..v.."',\n"
-            end
-            file = file.."}"
-            writefile("Task Manager/MainAccounts.txt", file)
-        end
-    end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     -- Main Accounts
     MainAccounts = {
@@ -575,7 +598,6 @@ if table.find(Whitelist, game.Players.LocalPlayer.UserId) or Free == true then
                         ToFollow = false
                     end
                     if string.lower(messageData.Message):match("!jump") then
-                        print("jump")
                         Jump()
                     end
                     if string.lower(messageData.Message):match("!tweentoposition") then
