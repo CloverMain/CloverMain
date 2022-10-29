@@ -485,7 +485,6 @@ if table.find(Whitelist, game.Players.LocalPlayer.UserId) or Free == true then
             file = file.."}"
             writefile("Task Manager/"..game.Players.LocalPlayer.UserId..".txt", file)
         end
-        ChangeTo = nil
     end
 
     -- Accounts
