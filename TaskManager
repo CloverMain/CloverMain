@@ -401,6 +401,13 @@ if table.find(Whitelist, game.Players.LocalPlayer.UserId) or Free == true then
     if (not isfile("Task Manager/MainAccounts.txt")) then
         writefile("Task Manager/MainAccounts.txt", "");
     end
+    loadfile("Task Manager/"..game.Players.LocalPlayer.UserId..".txt")()
+    if not ToDo then
+        file = "ToDo = {\n"
+        file = file.."}"
+        writefile("Task Manager/"..game.Players.LocalPlayer.UserId..".txt", file)
+    end
+
     function ClearTasks()
         writefile("Task Manager/"..game.Players.LocalPlayer.UserId..".txt", "")
     end
