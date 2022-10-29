@@ -145,6 +145,7 @@ if table.find(Whitelist, game.Players.LocalPlayer.UserId) or Free == true then
                 Times = 1
             end
             if Keybind ~= nil then
+                Keybind = Keybind:gsub("^%l", string.upper)
                 for x = 1,Times do
                     if Delay == nil and tonumber(Delay) then
                         wait(Delay)
