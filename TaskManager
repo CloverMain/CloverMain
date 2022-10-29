@@ -208,6 +208,7 @@ if table.find(Whitelist, game.Players.LocalPlayer.UserId) or Free == true then
         end
     end
     function CheckIFExists(folder, v1, Skip)
+        print("run")
         if folder == nil then
             folder = game.workspace
         end
