@@ -55,16 +55,6 @@ if table.find(Whitelist, game.Players.LocalPlayer.UserId) or Free == true then
         end
     end
 
-    function EquipTool(item)
-        if Stopscript == 0 then
-            for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
-                if v.Name == item then
-                    game.Players.LocalPlayer.Character:WaitForChild("Humanoid"):EquipTool(v)
-                end
-            end
-        end
-    end
-
     local player = game.Players.LocalPlayer
     local UnderPlayer = Instance.new("Part")
     UnderPlayer.Parent = game.workspace
@@ -108,6 +98,16 @@ if table.find(Whitelist, game.Players.LocalPlayer.UserId) or Free == true then
             SetGround()
             tween.Completed:Wait()
             tweenground = 0
+        end
+    end
+
+    function EquipTool(item)
+        if Stopscript == 0 then
+            for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+                if v.Name == item then
+                    game.Players.LocalPlayer.Character:WaitForChild("Humanoid"):EquipTool(v)
+                end
+            end
         end
     end
 
@@ -458,6 +458,33 @@ if table.find(Whitelist, game.Players.LocalPlayer.UserId) or Free == true then
         end
         file = file.."}"
         writefile("Task Manager/"..game.Players.LocalPlayer.UserId..".txt", file)
+    end
+
+    ChangeTo = nil
+    function ChangeTask(txt)
+        if tonumber(ChangeTo) then
+            if (not isfile("Task Manager/"..game.Players.LocalPlayer.UserId..".txt")) then
+                writefile("Task Manager/"..game.Players.LocalPlayer.UserId..".txt", "");
+            end
+            loadfile("Task Manager/"..game.Players.LocalPlayer.UserId..".txt")()
+            if ToDo then
+                tbl = ToDo
+            else
+                tbl = {
+                }
+            end
+            tbl[ChangeTo] = txt
+            
+            file = "ToDo = {\n"
+            for i,v in pairs(tbl) do
+                local text = i
+                local number = v
+                file = file.."   ["..i.."] = '"..v.."',\n"
+            end
+            file = file.."}"
+            writefile("Task Manager/"..game.Players.LocalPlayer.UserId..".txt", file)
+        end
+        ChangeTo = nil
     end
 
     -- Accounts
