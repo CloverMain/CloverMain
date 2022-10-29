@@ -10,6 +10,7 @@ if table.find(Whitelist, game.Players.LocalPlayer.UserId) or Free == true then
     Stopscript = 0
     SkipTasks = 0
     function GetToPosition(x,y,z)
+        print("run")
         if Stopscript == 0 then
             if not tonumber(x) then
                 x = game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position.X
